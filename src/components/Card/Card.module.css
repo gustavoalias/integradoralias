@@ -1,0 +1,128 @@
+.card {
+  width: 350px;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(128, 128, 128, 0.3);
+}
+.card_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card_title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.card_description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description {
+  font-size: 1rem;
+  font-weight: 200;
+  color: rgb(131, 131, 131);
+}
+
+.card_body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.card_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_gallery {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+img {
+  object-fit: cover;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.borde {
+  border: 1px solid pink;
+}
+.closeContainer {
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.leftright {
+  height: 4px;
+  width: 20px;
+  position: absolute;
+  background-color: #f4a259;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
+}
+.rightleft {
+  height: 4px;
+  width: 20px;
+  position: absolute;
+  background-color: #f4a259;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in;
+}
+
+label {
+  color: rgb(60, 60, 60);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in;
+  opacity: 0;
+  transform: translate(-60px, -5px);
+}
+
+.close {
+  /* margin: 60px 0 0 5px; */
+  position: absolute;
+}
+
+.closeContainer:hover .leftright {
+  transform: rotate(-45deg);
+  background-color: #f25c66;
+}
+
+.closeContainer:hover .rightleft {
+  transform: rotate(45deg);
+  background-color: #f25c66;
+}
+
+.closeContainer:hover label {
+  opacity: 1;
+}
+.footerText {
+  color: #7a7a7a;
+  font-weight: bold;
+}
+
+.imgRM:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+.imgRM {
+  width: 100%;
+  height: 100%;
+  transition: all 1s;
+}
