@@ -1,6 +1,12 @@
+import { useState } from "react";
 import style from "./SearchBar.module.css";
 
 export default function SearchBar(props) {
+  const [id, setId] = useState("");
+
+  const handleChange = (e) => {
+    setId(e.target.value);
+  };
   return (
     <div className={style.centrado}>
       <div className={style.buscador}>
@@ -8,8 +14,14 @@ export default function SearchBar(props) {
           type="search"
           className={style.customSearchInput}
           placeholder="Ingrese el id"
+          onChange={handleChange}
         />
-        <button className={style.customSearchButton} onClick={props.onSearch}>
+        <button
+          className={style.customSearchButton}
+          onClick={() => {
+            props.onSearch(id);
+          }}
+        >
           Agregar
         </button>
       </div>

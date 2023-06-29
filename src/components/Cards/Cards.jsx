@@ -15,7 +15,7 @@ export default function Cards(props) {
           image={p.image}
           origin={p.origin.name}
           onSearch={props.onSearch}
-          onClose={() => window.alert("Emulamos que se cierra la card")}
+          onClose={props.onClose}
         />
       ))}
     </div>
