@@ -3,7 +3,7 @@
   padding: 1rem;
   margin: 1rem;
   background-color: white;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   box-shadow: 0 10px 20px rgba(128, 128, 128, 0.3);
 }
 .card_header {
@@ -47,13 +47,13 @@
   position: relative;
   width: 100%;
   height: 100%;
-  aspect-ratio: 1/1;
+  /* aspect-ratio: 1/1; */
   overflow: hidden;
 }
 
 img {
   object-fit: cover;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   cursor: pointer;
 }
 
@@ -118,11 +118,30 @@ label {
   font-weight: bold;
 }
 
-.imgRM:hover {
+/* .imgRM:hover {
   transform: scale(1.2) rotate(5deg);
-}
-.imgRM {
+} */
+/* .imgRM {
   width: 100%;
   height: 100%;
   transition: all 1s;
+} */
+
+.imgRM {
+  --f: .1; /* the parallax factor (the smaller the better) */
+  --r: 10px; /* radius */
+  
+  --_f: calc(100%*var(--f)/(1 + var(--f)));
+  --_a: calc(90deg*var(--f));
+  width: 250px; /* the image size */
+  aspect-ratio: calc(1 + var(--f));
+  object-fit: cover;
+  clip-path: inset(0 var(--_f) 0 0 round var(--r));
+  transform: perspective(400px) var(--_t,rotateY(var(--_a)));
+  transition: .5s;
+  cursor: pointer;
+}
+.imgRM:hover {
+  clip-path: inset(0 0 0 var(--_f) round var(--r));
+  --_t:translateX(calc(-1*var(--_f))) rotateY(calc(-1*var(--_a)))
 }
