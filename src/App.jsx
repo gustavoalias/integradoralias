@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import Nav from "./components/Nav/Nav";
 import { useState } from "react";
 import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 // import characters, { Rick } from "./data";
 
 function App() {
