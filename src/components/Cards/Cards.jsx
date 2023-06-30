@@ -2,7 +2,6 @@ import Card from "../Card/Card";
 import style from "./Cards.module.css";
 
 export default function Cards(props) {
-  console.log(props.characters);
   return (
     <div className={style.cardsContainer}>
       {props.characters.map((p) => (
@@ -16,6 +15,7 @@ export default function Cards(props) {
           origin={p.origin.name}
           onSearch={props.onSearch}
           onClose={props.onClose}
+          id={p.id}
         />
       ))}
     </div>

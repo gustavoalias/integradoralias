@@ -15,8 +15,8 @@ body {
   background-color: hsl(130, 43%, 95%);
   font-family: Roboto;
   min-height: 100vh;
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 }

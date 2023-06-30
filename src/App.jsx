@@ -31,26 +31,36 @@ function App() {
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(
       ({ data }) => {
         if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
+          if (characters.some((chars) => chars.id === data.id)) {
+            alert("El personaje ya está mostrandose en pantalla");
+          } else {
+            setCharacters((oldChars) => [...oldChars, data]);
+          }
         } else {
           window.alert("¡No hay personajes con este ID!");
+          console.log(id);
         }
       }
     );
   }
 
   function onClose(id) {
-    event.preventDefault();
+    console.log("entra al onClose()");
     setCharacters(
-      characters.filter((pj) => {
-        return pj.id !== Number(id);
+      characters.filter((_char) => {
+        return _char.id !== Number(id);
       })
     );
+    console.log(id);
+  }
+
+  function onRandom() {
+    onSearch(Math.floor(Math.random() * 820) + 1);
   }
 
   return (
     <div className="App">
-      <Nav onSearch={onSearch} />
+      <Nav onSearch={onSearch} onRandom={onRandom} />
       {/* <SearchBar onSearch={(characterID) => window.alert(characterID)} /> */}
       <Cards characters={characters} onClose={onClose} />
     </div>

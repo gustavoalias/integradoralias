@@ -6,7 +6,8 @@ export default function Card(props) {
       <div className={style.card}>
         <header className={style.card_header}>
           <p className={style.description}>{props.status}</p>
-          <a href="#" onClick={props.onClose}>
+
+          <a href="#" onClick={() => props.onClose(props.id)}>
             <div className={style.closeContainer}>
               <div className={style.leftright}></div>
               <div className={style.rightleft}></div>

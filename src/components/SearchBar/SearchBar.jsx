@@ -17,12 +17,21 @@ export default function SearchBar(props) {
           onChange={handleChange}
         />
         <button
-          className={style.customSearchButton}
+          className={`${style.customSearchButton} ${style.buscar}`}
           onClick={() => {
             props.onSearch(id);
           }}
         >
           Agregar
+        </button>
+
+        <button
+          className={`${style.customSearchButton} ${style.random}`}
+          onClick={() => {
+            props.onRandom();
+          }}
+        >
+          Random
         </button>
       </div>
     </div>
