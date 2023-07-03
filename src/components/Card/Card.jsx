@@ -1,5 +1,5 @@
-import style from "./Card.module.css";
-
+import style from "./Card.module.css"
+import { Link } from "react-router-dom"
 export default function Card(props) {
   return (
     <div>
@@ -19,19 +19,17 @@ export default function Card(props) {
           <img src={props.image} alt={props.name} className={style.imgRM} />
         </div>
         <div className={style.card_body}>
-          <h2 className={style.card_title}>{props.name}</h2>
+          <Link to={`/detail/${props.id}`}>
+            <h2 className={style.card_title}>{props.name}</h2>
+          </Link>
           <div className={style.card_description}>
-            <p className={`${style.description} ${style.footerText}`}>
-              {props.species}
-            </p>
-            <p className={`${style.description} ${style.footerText}`}>
-              {props.gender}
-            </p>
+            <p className={`${style.description} ${style.footerText}`}>{props.species}</p>
+            <p className={`${style.description} ${style.footerText}`}>{props.gender}</p>
           </div>
         </div>
 
         <div className={style.card_info}>{props.origin.name}</div>
       </div>
     </div>
-  );
+  )
 }
