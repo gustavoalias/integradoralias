@@ -1,29 +1,53 @@
-import React from "react"
-import { useState } from "react"
+import React from "react";
+import validate from "./validate";
+import { useState } from "react";
 
-function Form() {
-  const [user, setUser] = useState({ email: "", password: "" })
-  const [errors, setErrors] = useState({})
+function Form(props) {
+  const [userData, setUserData] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({});
 
-  function handleChange(event) {
-    setUser({ ...user, [event.target.name]: event.target.value })
-    setErrors(validate({ ...user, [event.target.name]: event.target.value }))
-  }
+  const handleChange = (event) => {
+    setUserData({ ...userData, [event.target.name]: event.target.value });
+    setErrors(
+      validate({ ...userData, [event.target.name]: event.target.value })
+    );
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.login(userData);
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
-          <label for="user">Usuario:</label>
-          <input type="text" id="email" name="email" value={userData.email} onChange={handleChange} />
+          <label htmlFor="user">Usuario:</label>
+          <input
+            type="text"
+            placeholder="Enter your email"
+            id="email"
+            name="email"
+            value={userData.email}
+            onChange={handleChange}
+          />
+          <p>{errors.email ? errors.email : null}</p>
         </div>
+
         <div>
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password" name="password" value={userData.password} />
+          <label htmlFor="password">Contraseña:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            value={userData.password}
+            onChange={handleChange}
+          />
+          <p>{errors.password ? errors.password : null}</p>
         </div>
         <button type="submit">Enviar</button>
       </form>
     </div>
-  )
+  );
 }
 
-export default Form
+export default Form;
