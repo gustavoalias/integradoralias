@@ -4,3 +4,16 @@
   margin-bottom: 2rem;
   width: 100%;
 }
+.logoclass {
+  width: 18%;
+}
+.divMenu {
+  display: flex;
+  gap: 2;
+  justify-content: end;
+  align-items: center;
+}
+.menuLink {
+  padding-right: 1rem;
+  color: #02b1c8;
+}
