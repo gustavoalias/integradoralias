@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import About from "./components/About/About";
 import Form from "./components/Form/Form";
 import Nav from "./components/Nav/Nav";
+import Favorites from "./components/Favorites/Favorites";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
@@ -91,6 +92,7 @@ function App() {
         />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<h1>No existe la página</h1>} />
       </Routes>
       {/* <SearchBar onSearch={(characterID) => window.alert(characterID)} /> */}

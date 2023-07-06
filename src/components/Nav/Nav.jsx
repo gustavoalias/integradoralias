@@ -11,6 +11,7 @@ export default function Nav(props) {
       <div>
         <Link to="/home">Home</Link>
         <Link to="/about">About</Link>
+        <Link to="/favorites">FAVS ❤️</Link>
       </div>
       <SearchBar onSearch={props.onSearch} onRandom={props.onRandom} />
     </div>
