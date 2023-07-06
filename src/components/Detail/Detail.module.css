@@ -1,0 +1,12 @@
+.charWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.charImg {
+  margin-right: 2rem;
+}
+.listCharProperty {
+  text-align: left;
+  line-height: 2.5rem;
+}
