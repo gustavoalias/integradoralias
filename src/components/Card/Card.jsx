@@ -21,7 +21,6 @@ export default function Card({
 
   function handleClick() {
     console.log(favorites);
-    //despachar el objeto de la accion
     if (isFavorite) {
       setIsFavorite(false);
       dispatch(deleteFavorite(id));
