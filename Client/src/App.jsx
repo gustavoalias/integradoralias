@@ -71,12 +71,11 @@ function App() {
   function onSearch(id) {
     axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
       ({ data }) => {
-        console.log(typeof data);
-        if (data[0]) {
+        if (data) {
           if (characters.some((chars) => chars.id === id)) {
             alert("El personaje ya está mostrándose en pantalla");
           } else {
-            setCharacters((oldChars) => [...oldChars, data[0]]);
+            setCharacters((oldChars) => [...oldChars, data]);
           }
         } else {
           window.alert("¡No hay personajes con este ID!");
