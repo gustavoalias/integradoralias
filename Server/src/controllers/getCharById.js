@@ -12,6 +12,7 @@ function getCharById(res, id) {
         origin: data.origin.name,
         image: data.image,
         status: data.status,
+        id: data.id,
       };
       return res
         .writeHead(200, { "Content-type": "application/json" })
