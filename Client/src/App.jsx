@@ -76,6 +76,7 @@ function App() {
             alert("El personaje ya está mostrándose en pantalla");
           } else {
             setCharacters((oldChars) => [...oldChars, data]);
+            console.log(data);
           }
         } else {
           window.alert("¡No hay personajes con este ID!");
