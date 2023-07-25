@@ -1,26 +1,67 @@
-import { ADDFAVORITE, DELETEFAVORITE } from "../actions/types";
+import {
+  ADD_FAV,
+  GET_DATA,
+  REMOVE_FAV,
+  ORDER,
+  FILTER,
+  ORIGINAL,
+} from "../actions/types";
 
-const initialGlobalState = {
-  favorites: [],
+const initialState = {
+  myFavorites: [],
   characters: [],
-  access: false,
-  detail: {},
+  allCharacters: [],
 };
 
-export default function rootReducer(state = initialGlobalState, action) {
-  // Nos fijabamos por el TYPE de la accion
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADDFAVORITE:
+    case ADD_FAV:
       return {
         ...state,
-        favorites: [...state.favorites, action.payload],
+        myFavorites: [...state.myFavorites, action.payload],
+        allCharacters: [...state.myFavorites, action.payload],
       };
-    case DELETEFAVORITE:
+    case REMOVE_FAV:
+      const result = state.myFavorites.filter((p) => p.id != action.payload);
       return {
         ...state,
-        favorites: state.favorites.filter((fav) => fav.id !== action.payload),
+        myFavorites: result,
+        allCharacters: result,
       };
+    case GET_DATA:
+      return {
+        ...state,
+        characters: action.payload,
+      };
+    case FILTER:
+      const resultFilter = state.allCharacters.filter(
+        (p) => p.gender === action.payload
+      );
+      return {
+        ...state,
+        myFavorites: resultFilter,
+      };
+    case ORDER:
+      const resultOrder = state.myFavorites.sort((a, b) => {
+        if (a.id > b.id && action.payload === "D") return b.id - a.id;
+        if (a.id < b.id && action.payload === "A") return a.id - b.id;
+
+        return 0;
+      });
+
+      return {
+        ...state,
+        myFavorites: resultOrder,
+      };
+    case ORIGINAL:
+      return {
+        ...state,
+        myFavorites: state.allCharacters,
+      };
+
     default:
-      return { ...state };
+      return state;
   }
-}
+};
+
+export default reducer;

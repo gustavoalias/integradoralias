@@ -4,7 +4,7 @@ import { connect, useSelector } from "react-redux";
 import Card from "../Card/Card";
 
 function Favorites() {
-  const favorites = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state.myFavorites);
 
   return (
     <div className={style.container}>

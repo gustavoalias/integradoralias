@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { addFavorite, deleteFavorite } from "../../redux/actions/actions";
+import { addFav, removeFav } from "../../redux/actions/actions";
 import style from "./Card.module.css";
 
 export default function Card({
@@ -14,20 +14,19 @@ export default function Card({
   image,
   id,
 }) {
-  const favorites = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state.myFavorites);
   const dispatch = useDispatch();
 
   const [isFavorite, setIsFavorite] = useState(false);
 
   function handleClick() {
-    console.log(favorites);
     if (isFavorite) {
       setIsFavorite(false);
-      dispatch(deleteFavorite(id));
+      dispatch(removeFav(id));
     } else {
       setIsFavorite(true);
       dispatch(
-        addFavorite({
+        addFav({
           name,
           species,
           onClose,
@@ -42,7 +41,7 @@ export default function Card({
   }
 
   useEffect(() => {
-    favorites.forEach((favorited) => {
+    favorites?.forEach((favorited) => {
       if (favorited.id === id) {
         setIsFavorite(true);
       }

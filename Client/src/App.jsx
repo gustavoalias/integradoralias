@@ -24,11 +24,22 @@ function App() {
   }, [access]);
 
   function login(userData) {
-    if (userData.email === EMAIL && userData.password === PASSWORD) {
-      setAccess(true);
-      Navigate("/home");
-    }
+    const { email, password } = userData;
+    const URL = "http://localhost:3001/rickandmorty/login/";
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      setAccess(data);
+      access && Navigate("/home");
+    });
   }
+
+  // Antes de conectarl back con el front
+  // function login(userData) {
+  //   if (userData.email === EMAIL && userData.password === PASSWORD) {
+  //     setAccess(true);
+  //     Navigate("/home");
+  //   }
+  // }
 
   //   const example = {
   //     id: 1,
@@ -69,21 +80,22 @@ function App() {
   // }
 
   function onSearch(id) {
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-      ({ data }) => {
+    axios(`http://localhost:3001/rickandmorty/character/${Number(id)}`)
+      .then(({ data }) => {
         if (data) {
           if (characters.some((chars) => chars.id === id)) {
             alert("El personaje ya está mostrándose en pantalla");
           } else {
             setCharacters((oldChars) => [...oldChars, data]);
-            console.log(data);
           }
         } else {
           window.alert("¡No hay personajes con este ID!");
           console.log(id);
         }
-      }
-    );
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
   }
 
   function onClose(id) {
