@@ -27,14 +27,6 @@ export const getCharacters = () => {
       console.log(err.message);
     }
   };
-
-  /*return function (dispatch)
-    {
-       fetch(`https://rickandmortyapi.com/api/character/`).then((response)=> response.json())
-       .then((data)=> 
-            dispatch({type: GET_DATA,payload:data})
-       )
-    } */
 };
 
 export const filterCards = (gender) => {
@@ -77,14 +69,3 @@ export const original = () => {
 //     });
 //   };
 // };
-
-// //Antes de conectar el back cn el front
-// // import { ADDFAVORITE, DELETEFAVORITE } from "./types";
-// // // Actions creators
-// // export function addFavorite(character) {
-// //   return { type: ADDFAVORITE, payload: character };
-// // }
-
-// // export function deleteFavorite(id) {
-// //   return { type: DELETEFAVORITE, payload: id };
-// // }
